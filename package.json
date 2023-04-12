@@ -1,7 +1,7 @@
 {
-	"name": "typescript-to-proptypes",
+	"name": "ts-react-prop-types",
 	"packageManager": "yarn@3.5.0",
-	"version": "2.2.1",
+	"version": "1.0.0",
 	"description": "Generate proptypes from typescript declarations",
 	"main": "dist/index.js",
 	"engines": {
@@ -12,9 +12,9 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/merceyz/typescript-to-proptypes.git"
+		"url": "https://github.com/danielfalk/ts-react-prop-types.git"
 	},
-	"author": "merceyz <merceyz@users.noreply.github.com>",
+	"author": "danielfalk <danielfalk@users.noreply.github.com>",
 	"license": "MIT",
 	"keywords": [
 		"proptypes",

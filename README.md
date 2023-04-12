@@ -1,13 +1,15 @@
-# typescript-to-proptypes
+# ts-react-prop-types
 
 An API for converting [TypeScript](https://www.npmjs.com/package/typescript) definitions to [PropTypes](https://www.npmjs.com/package/prop-types) using the TypeScript Compiler API
+
+**note**: This library is a maintenance fork of [typescript-to-proptypes](https://github.com/merceyz/typescript-to-proptypes) because the original has not been updated for almost 2 years as of the creation of this fork. If the original package becomes actively maintained again, please use that instead.
 
 ## Install
 
 ```
-yarn add typescript-to-proptypes --dev
+yarn add ts-react-prop-types --dev
 or
-npm install typescript-to-proptypes --save-dev
+npm install ts-react-prop-types --save-dev
 ```
 
 ## Support
