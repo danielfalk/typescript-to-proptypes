@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/danielfalk/ts-react-prop-types/compare/v2.2.2...v2.3.0) (2023-04-15)
+
+### Features
+
+- Support exactOptionalPropertyTypes tsconfig property ([2bcdeea](https://github.com/danielfalk/ts-react-prop-types/commit/2bcdeeab99011eeb7a1c302f8d130b80b4ac18d6))
+
 ### [2.2.2](https://github.com/danielfalk/ts-react-prop-types/compare/v2.2.1...v2.2.2) (2023-04-13)
 
 ### [2.2.1](https://github.com/merceyz/typescript-to-proptypes/compare/v2.2.0...v2.2.1) (2021-08-01)
