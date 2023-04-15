@@ -5,7 +5,7 @@ const typeString = 'ComponentNode';
 
 export interface ComponentNode extends DefinitionHolder {
 	name: string;
-	propsFilename?: string;
+	propsFilename?: string | undefined;
 }
 
 export function componentNode(

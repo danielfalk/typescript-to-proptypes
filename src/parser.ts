@@ -414,7 +414,12 @@ export function parseFromProgram(
 				? t.unionNode([t.undefinedNode(), t.anyNode()])
 				: t.anyNode();
 		} else {
-			parsedType = checkType(type, typeStack, symbol.getName());
+			const isOptional = !!(
+				declaration &&
+				ts.isPropertySignature(declaration) &&
+				declaration.questionToken
+			);
+			parsedType = checkType(type, typeStack, symbol.getName(), isOptional);
 		}
 
 		return t.propTypeNode(
@@ -426,11 +431,24 @@ export function parseFromProgram(
 		);
 	}
 
-	function checkType(type: ts.Type, typeStack: Set<number>, name: string): t.Node {
+	function checkType(
+		type: ts.Type,
+		typeStack: Set<number>,
+		name: string,
+		isOptional: boolean
+	): t.Node {
 		// If the typeStack contains type.id we're dealing with an object that references itself.
 		// To prevent getting stuck in an infinite loop we just set it to an objectNode
 		if (typeStack.has((type as any).id)) {
 			return t.objectNode();
+		}
+
+		if (isOptional && !type.isUnion()) {
+			if (type.flags & ts.TypeFlags.Undefined) {
+				return t.undefinedNode();
+			}
+
+			return t.unionNode([t.undefinedNode(), checkType(type, typeStack, name, false)]);
 		}
 
 		{
@@ -464,11 +482,19 @@ export function parseFromProgram(
 		if (checker.isArrayType(type)) {
 			// @ts-ignore - Private method
 			const arrayType: ts.Type = checker.getElementTypeOfArrayType(type);
-			return t.arrayNode(checkType(arrayType, typeStack, name));
+			return t.arrayNode(checkType(arrayType, typeStack, name, false));
 		}
 
 		if (type.isUnion()) {
-			const node = t.unionNode(type.types.map((x) => checkType(x, typeStack, name)));
+			const types = type.types
+				.filter((x) => !isOptional || !(x.flags & ts.TypeFlags.Undefined))
+				.map((x) => checkType(x, typeStack, name, false));
+
+			if (isOptional) {
+				types.unshift(t.undefinedNode());
+			}
+
+			const node = t.unionNode(types);
 
 			return node.types.length === 1 ? node.types[0] : node;
 		}

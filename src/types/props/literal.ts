@@ -8,11 +8,14 @@ export interface LiteralNode extends Node {
 }
 
 export function literalNode(value: unknown, jsDoc?: string): LiteralNode {
-	return {
+	const result: LiteralNode = {
 		type: typeString,
 		value,
-		jsDoc,
 	};
+	if (jsDoc !== undefined) {
+		result.jsDoc = jsDoc;
+	}
+	return result;
 }
 
 export function isLiteralNode(node: Node): node is LiteralNode {

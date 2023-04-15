@@ -20,14 +20,17 @@ export function propTypeNode(
 	filenames: Set<string>,
 	id: number | undefined
 ): PropTypeNode {
-	return {
+	const result: PropTypeNode = {
 		type: typeString,
 		name,
-		jsDoc,
 		propType,
 		filenames,
 		$$id: id,
 	};
+	if (jsDoc !== undefined) {
+		result.jsDoc = jsDoc;
+	}
+	return result;
 }
 
 export function isPropTypeNode(node: Node): node is PropTypeNode {

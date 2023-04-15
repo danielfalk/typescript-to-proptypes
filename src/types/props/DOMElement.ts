@@ -7,10 +7,13 @@ interface DOMElementNode extends Node {
 }
 
 export function DOMElementNode(optional?: boolean): DOMElementNode {
-	return {
+	const result: DOMElementNode = {
 		type: typeString,
-		optional,
 	};
+	if (optional !== undefined) {
+		result.optional = optional;
+	}
+	return result;
 }
 
 export function isDOMElementNode(node: Node): node is DOMElementNode {

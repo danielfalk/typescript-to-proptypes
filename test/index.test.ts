@@ -35,7 +35,8 @@ for (const testCase of testCases) {
 		const newAST = ttp.programNode(
 			ast.body.map((component) => {
 				expect(component.propsFilename).toBe(testCase);
-				return { ...component, propsFilename: undefined };
+				const { propsFilename, ...comp } = component;
+				return comp;
 			})
 		);
 
