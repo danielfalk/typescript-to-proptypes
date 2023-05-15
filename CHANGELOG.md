@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/danielfalk/ts-react-prop-types/compare/v2.2.2...v2.4.0) (2023-05-15)
+
+### Features
+
+- Support exactOptionalPropertyTypes tsconfig property ([2bcdeea](https://github.com/danielfalk/ts-react-prop-types/commit/2bcdeeab99011eeb7a1c302f8d130b80b4ac18d6))
+
+### Bug Fixes
+
+- Treat unions with nulls as non-required ([772f350](https://github.com/danielfalk/ts-react-prop-types/commit/772f3500dc64df7063ec647b7e055201bcb48a4c))
+
 ## [2.3.0](https://github.com/danielfalk/ts-react-prop-types/compare/v2.2.2...v2.3.0) (2023-04-15)
 
 ### Features

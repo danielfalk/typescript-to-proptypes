@@ -1,7 +1,7 @@
 {
 	"name": "ts-react-prop-types",
 	"packageManager": "yarn@3.5.0",
-	"version": "2.3.0",
+	"version": "2.4.0",
 	"description": "Generate proptypes from typescript declarations",
 	"main": "dist/index.js",
 	"engines": {
