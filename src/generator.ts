@@ -168,7 +168,13 @@ export function generate(node: t.Node | t.PropTypeNode[], options: GenerateOptio
 		let isOptional = false;
 		let propType = { ...node.propType };
 
-		if (t.isUnionNode(propType) && propType.types.some(t.isUndefinedNode)) {
+		if (
+			t.isUnionNode(propType) &&
+			(propType.types.some(t.isUndefinedNode) ||
+				// Types that are nullable should be treated as optional because the prop-types library
+				// doesn't distinguish between null and undefined in the same way that Typescript does.
+				propType.types.some((prop) => t.isLiteralNode(prop) && prop.value === 'null'))
+		) {
 			isOptional = true;
 			propType.types = propType.types.filter(
 				(prop) => !t.isUndefinedNode(prop) && !(t.isLiteralNode(prop) && prop.value === 'null')

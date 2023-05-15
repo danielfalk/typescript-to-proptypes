@@ -1,0 +1,47 @@
+{
+	"type": "ProgramNode",
+	"body": [
+		{
+			"type": "ComponentNode",
+			"name": "Foo",
+			"types": [
+				{
+					"type": "PropTypeNode",
+					"name": "stringThatsOptional",
+					"propType": {
+						"type": "UnionNode",
+						"types": [{ "type": "UndefinedNode" }, { "type": "StringNode" }]
+					}
+				},
+				{
+					"type": "PropTypeNode",
+					"name": "maybeString",
+					"propType": {
+						"type": "UnionNode",
+						"types": [{ "type": "UndefinedNode" }, { "type": "StringNode" }]
+					}
+				},
+				{
+					"type": "PropTypeNode",
+					"name": "nullableString",
+					"propType": {
+						"type": "UnionNode",
+						"types": [{ "type": "LiteralNode", "value": "null" }, { "type": "StringNode" }]
+					}
+				},
+				{
+					"type": "PropTypeNode",
+					"name": "maybeNullableString",
+					"propType": {
+						"type": "UnionNode",
+						"types": [
+							{ "type": "UndefinedNode" },
+							{ "type": "LiteralNode" },
+							{ "type": "StringNode" }
+						]
+					}
+				}
+			]
+		}
+	]
+}
